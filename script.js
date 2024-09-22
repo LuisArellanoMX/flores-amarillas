@@ -49,9 +49,22 @@ function consoleText(words, id, colors) {
   }, 400)
 }
 
+function p_audio(){
+  const audio = new Audio('audio.mp3');
+  audio.loop = true;
+  document.addEventListener('click', function() {
+    audio.play().then(() => {
+        console.log("Audio reproducido");
+    }).catch((error) => {
+        console.error("Error al reproducir el audio: ", error);
+    });
+}, { once: true }); // 'once' asegura que el evento se ejecute solo una vez
+}
+
 
 onload = () => {
   document.body.classList.remove("container");
   consoleText(['Hola Gaby', 'Flores Amarillas para ti', 'Te Quiero Mucho <3'], 'text',['gold','lightyellow','red']);
+  p_audio();
 };
 
